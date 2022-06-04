@@ -1,28 +1,34 @@
 package com.test.etsy.test;
 
+import com.test.etsy.TestBase;
 import com.test.etsy.pages.HomePage;
+
+import static org.testng.Assert.*;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import static org.testng.Assert.*;
-
 import org.testng.annotations.*;
 
 import java.io.File;
 
 
-public class HomePageTest {
-    WebDriver driver;
+public class HomeTest {
 
-    @BeforeMethod
-    public void setDriver(){
+    //adding before and after methods to this test class only because it doesn't
+    // follow the same flow as the other tests
+    public WebDriver driver;
+
+    @BeforeMethod // it will run before all of the other test annotations
+    public void setUp() throws InterruptedException{
         WebDriverManager.chromedriver().setup();
         driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.etsy.com/");
+        Thread.sleep(2000);
     }
 
     @Test
@@ -47,7 +53,6 @@ public class HomePageTest {
         homePage.SignIn("elifozdemir89+etsy@gmail.c", "TenaciousTigers");
         Thread.sleep(500);
         assertTrue(homePage.ErrorMessageForEmail().contains("Email address is invalid"));
-
     }
 
     @Test
@@ -66,30 +71,18 @@ public class HomePageTest {
 
     @AfterClass
     public static void takeSnapShot(WebDriver webdriver,String fileWithPath) throws Exception{
-
         //Convert web driver object to TakeScreenshot
-
         TakesScreenshot scrShot =((TakesScreenshot)webdriver);
-
         //Call getScreenshotAs method to create image file
-
         File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
-
         //Move image file to new destination
-
         File DestFile=new File(fileWithPath);
-
         //Copy file at destination
-
         FileUtils.copyFile(SrcFile, DestFile);
-
     }
 
     @AfterMethod
     public void tearDown(){
         driver.close();
     }
-
-
-
 }
