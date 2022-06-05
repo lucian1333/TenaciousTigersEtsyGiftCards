@@ -49,6 +49,13 @@ public class ShopGiftCardsTest extends TestBase {
             Assert.assertTrue(designTemp.isDisplayed());
     }
     }
-
+    @Test
+    public void addMessageToGiftCard() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
+        homePage.ClickShopGiftCards(driver);
+        Thread.sleep(2000);
+        ShopGiftCardsPage shopGiftCards = new ShopGiftCardsPage(driver);
+        shopGiftCards.addMessage("I hope you love your gift!"); Thread.sleep(2500);
+    }
 
 }
