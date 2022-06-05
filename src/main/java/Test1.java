@@ -11,22 +11,11 @@ public class Test1 {
     @Test
 
     public void optionSendCardByEmail () {
-
-
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.etsy.com/giftcards/");
-
         WebElement emailToRecipient = driver.findElement(By.xpath("//div[@class='wt-radio']//label[@for='medium-email']"));
-
         Assert.assertTrue(emailToRecipient.getText().trim().equals("Email to recipient"));
-
-
-
-
-
-
-
     }
 
     @Test
@@ -55,7 +44,6 @@ public class Test1 {
         facebook.isDisplayed();
         WebElement apple=driver.findElement(By.xpath("//a[@aria-describedby='aria-privacy-policy']"));
         apple.isDisplayed();
-
     }
 
 
