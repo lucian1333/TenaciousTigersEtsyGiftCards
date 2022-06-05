@@ -21,13 +21,16 @@ public class ShopGiftCardsPage {
 
     @FindBy(xpath = "//div[@class='wt-radio']//label[@for='medium-email']")
     WebElement emailToRecipient;
+
     @FindBy(xpath = "//span[@class='wt-grid__item-xs-4 wt-grid__item-md-4 wt-grid__item-lg-3 wt-grid__item-xl-3 wt-p-xs-0']")
     List<WebElement> designTemplateList;
+
+    @FindBy(id="message")
+    WebElement messageBox;
 
     public void clickChangeCurrency(){
         changeCurrency.click();
     }
-
 
     public WebElement getChangeCurrency() {
         return changeCurrency;
@@ -43,5 +46,10 @@ public class ShopGiftCardsPage {
 
     public List<WebElement> getDesignTemplateList() {
         return designTemplateList;
+    }
+
+    public void addMessage(String message){
+        messageBox.click();
+        messageBox.sendKeys(message);
     }
 }
