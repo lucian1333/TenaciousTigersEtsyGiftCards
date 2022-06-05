@@ -10,7 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage {
     public HomePage(WebDriver driver){
         PageFactory.initElements(driver, this);
-
     }
 
     @FindBy (xpath = "//button[@class='wt-btn wt-btn--small wt-btn--transparent wt-mr-xs-1 inline-overlay-trigger signin-header-action select-signin']")
@@ -69,6 +68,5 @@ public class HomePage {
 
     public String WelcomeMessageAfterLogin(){
         return BrowserUtils.getText(welcomeMessage);
-
     }
 }

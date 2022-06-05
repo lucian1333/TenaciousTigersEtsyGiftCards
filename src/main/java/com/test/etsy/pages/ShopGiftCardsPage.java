@@ -7,8 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class ShopGiftCards {
-    public ShopGiftCards(WebDriver driver){
+public class ShopGiftCardsPage {
+    public ShopGiftCardsPage(WebDriver driver){
         PageFactory.initElements(driver, this);
 
     }

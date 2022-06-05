@@ -1,4 +1,8 @@
 package com.test.etsy.test;
 
-public class RedeemGiftCardsTest {
+import com.test.etsy.TestBase;
+
+public class RedeemGiftCardsTest extends TestBase {
+
+
 }
