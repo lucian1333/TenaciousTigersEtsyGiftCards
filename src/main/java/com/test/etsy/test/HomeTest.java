@@ -16,20 +16,8 @@ import org.testng.annotations.*;
 import java.io.File;
 
 
-public class HomeTest {
+public class HomeTest extends TestBase {
 
-    //adding before and after methods to this test class only because it doesn't
-    // follow the same flow as the other tests
-    public WebDriver driver;
-
-    @BeforeMethod // it will run before all of the other test annotations
-    public void setUp() throws InterruptedException{
-        WebDriverManager.chromedriver().setup();
-        driver=new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://www.etsy.com/");
-        Thread.sleep(2000);
-    }
 
     @Test
     public void validatePositiveLoginTest() throws InterruptedException {
@@ -41,15 +29,15 @@ public class HomeTest {
 
     @Test
     public void validateNegativeLoginTest() throws InterruptedException {
-        HomePage homePage=new HomePage(driver);
+        HomePage homePage = new HomePage(driver);
         homePage.SignIn("elifozdemir89+etsy@gmail.com", "abcabc");
         Thread.sleep(500);
         assertTrue(homePage.ErrorMessageForPassword().contains("Password was incorrect"));
     }
 
     @Test
-    public void validateNegativeLoginTest2()throws InterruptedException{
-        HomePage homePage=new HomePage(driver);
+    public void validateNegativeLoginTest2() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
         homePage.SignIn("elifozdemir89+etsy@gmail.c", "TenaciousTigers");
         Thread.sleep(500);
         assertTrue(homePage.ErrorMessageForEmail().contains("Email address is invalid"));
@@ -57,32 +45,28 @@ public class HomeTest {
 
     @Test
     public void validateClickingShopGiftCards() throws InterruptedException {
-        HomePage homePage=new HomePage(driver);
+        HomePage homePage = new HomePage(driver);
         homePage.ClickShopGiftCards(driver);
-        assertEquals(driver.getCurrentUrl(),"https://www.etsy.com/giftcards?ref=catnav-shop-gift-card");
+        assertEquals(driver.getCurrentUrl(), "https://www.etsy.com/giftcards?ref=catnav-shop-gift-card");
     }
 
     @Test
-    public void validateClickingRedeemGiftCards() throws InterruptedException{
-        HomePage homePage=new HomePage(driver);
+    public void validateClickingRedeemGiftCards() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
         homePage.ClickRedeemGiftCards(driver);
-        assertEquals(driver.getCurrentUrl(),"https://www.etsy.com/redeem?ref=catnav-redeem-gift-card");
+        assertEquals(driver.getCurrentUrl(), "https://www.etsy.com/redeem?ref=catnav-redeem-gift-card");
     }
 
     @AfterClass
-    public static void takeSnapShot(WebDriver webdriver,String fileWithPath) throws Exception{
+    public static void takeSnapShot(WebDriver webdriver, String fileWithPath) throws Exception {
         //Convert web driver object to TakeScreenshot
-        TakesScreenshot scrShot =((TakesScreenshot)webdriver);
+        TakesScreenshot scrShot = ((TakesScreenshot) webdriver);
         //Call getScreenshotAs method to create image file
-        File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+        File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
         //Move image file to new destination
-        File DestFile=new File(fileWithPath);
+        File DestFile = new File(fileWithPath);
         //Copy file at destination
         FileUtils.copyFile(SrcFile, DestFile);
     }
 
-    @AfterMethod
-    public void tearDown(){
-        driver.close();
-    }
 }

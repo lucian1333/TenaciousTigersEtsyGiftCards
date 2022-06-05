@@ -1,10 +1,11 @@
 package com.test.etsy.utils;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Set;
 
 public class BrowserUtils {
@@ -63,6 +64,18 @@ public class BrowserUtils {
             if (driver.getTitle().contains(title)){
                 break;
             }
+        }
+    }
+
+    public static void getScreenshot(WebDriver driver,String packageName){
+
+        File file=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        String location=System.getProperty("user.dir")+"/src/java/screenshot"+packageName;
+
+        try {
+            FileUtils.copyFile(file,new File(location+System.currentTimeMillis()));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
