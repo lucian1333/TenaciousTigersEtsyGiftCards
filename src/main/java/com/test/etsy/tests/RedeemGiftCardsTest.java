@@ -1,4 +1,4 @@
-package com.test.etsy.test;
+package com.test.etsy.tests;
 
 import com.test.etsy.TestBase;
 

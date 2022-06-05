@@ -1,19 +1,11 @@
-package com.test.etsy.test;
+package com.test.etsy.tests;
 
 import com.test.etsy.TestBase;
 import com.test.etsy.pages.HomePage;
 
 import static org.testng.Assert.*;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
-
-import java.io.File;
 
 
 public class HomeTest extends TestBase {
@@ -57,16 +49,6 @@ public class HomeTest extends TestBase {
         assertEquals(driver.getCurrentUrl(), "https://www.etsy.com/redeem?ref=catnav-redeem-gift-card");
     }
 
-    @AfterClass
-    public static void takeSnapShot(WebDriver webdriver, String fileWithPath) throws Exception {
-        //Convert web driver object to TakeScreenshot
-        TakesScreenshot scrShot = ((TakesScreenshot) webdriver);
-        //Call getScreenshotAs method to create image file
-        File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
-        //Move image file to new destination
-        File DestFile = new File(fileWithPath);
-        //Copy file at destination
-        FileUtils.copyFile(SrcFile, DestFile);
-    }
+
 
 }
