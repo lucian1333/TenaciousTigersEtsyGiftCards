@@ -17,10 +17,7 @@ public class TestBase {
         driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.etsy.com/");
-        Thread.sleep(2000);
-        HomePage homePage = new HomePage(driver);
-        homePage.ClickShopGiftCards(driver);
-        Thread.sleep(2000);
+
     }
 
     @AfterMethod

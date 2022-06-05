@@ -21,11 +21,17 @@ public class ShopGiftCardsTest extends TestBase {
 
     @Test
     public void validateCurrencyIsDisplayed() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
+        homePage.ClickShopGiftCards(driver);
+        Thread.sleep(2000);
         ShopGiftCardsPage shopGiftCards=new ShopGiftCardsPage(driver);
         Assert.assertTrue(shopGiftCards.getChangeCurrency().isDisplayed());
     }
     @Test
     public void validateAllCurrenciesDisplayedAfterClickingChangeCurrency() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
+        homePage.ClickShopGiftCards(driver);
+        Thread.sleep(2000);
         ShopGiftCardsPage shopGiftCards=new ShopGiftCardsPage(driver);
         shopGiftCards.clickChangeCurrency();
         for(WebElement currency:shopGiftCards.getCurrencies()){
@@ -34,11 +40,17 @@ public class ShopGiftCardsTest extends TestBase {
     }
     @Test
     public void validateOptionSendCardByEmailTest() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
+        homePage.ClickShopGiftCards(driver);
+        Thread.sleep(2000);
         ShopGiftCardsPage shopGiftCards=new ShopGiftCardsPage(driver);
         Assert.assertTrue(BrowserUtils.getText(shopGiftCards.getEmailToRecipient()).equals("Email to recipient"));
     }
     @Test
     public void validateDesignTemplatesTest() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
+        homePage.ClickShopGiftCards(driver);
+        Thread.sleep(2000);
         ShopGiftCardsPage shopGiftCards=new ShopGiftCardsPage(driver);
       for(  WebElement designTemp : shopGiftCards.getDesignTemplateList()) {
             Assert.assertTrue(designTemp.isDisplayed());
