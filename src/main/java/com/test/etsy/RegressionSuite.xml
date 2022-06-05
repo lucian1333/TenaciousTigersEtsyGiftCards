@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="TestNG Regression Runner">
+    <test name="Etsy Gift Cards Tests">
+        <classes>
+            <class name="com.test.etsy.tests.HomeTest"></class>
+            <class name="com.test.etsy.tests.ShopGiftCardsTest"></class>
+        </classes>
+
+    </test>
+</suite>
